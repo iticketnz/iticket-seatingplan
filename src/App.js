@@ -1,25 +1,28 @@
-import logo from './logo.svg';
-import './App.css';
+import './App.css'
+import SeatingPlan from './components/SeatingPlan'
 
-function App() {
+function App({
+  eventid,
+  showinguid,
+  sessionid,
+  showingid,
+  priceageid,
+  price,
+  quantity,
+}) {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <SeatingPlan
+        eventId={eventid * 1}
+        showingUid={showinguid}
+        sessionId={sessionid}
+        showingId={showingid * 1}
+        priceAgeId={priceageid * 1}
+        price={price * 1}
+        quantity={quantity * 1}
+      />
     </div>
-  );
+  )
 }
 
-export default App;
+export default App
