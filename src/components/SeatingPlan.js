@@ -191,6 +191,7 @@ const SeatingPlan = ({
     }
   }, [chosenSeat])
 
+  // return seating plan
   return (
     <div style={{ height: '100%' }}>
       {error ? (
