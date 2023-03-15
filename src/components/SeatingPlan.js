@@ -8,7 +8,6 @@ import {
   GeoJSON,
 } from 'react-leaflet'
 
-// const rippleLoading = require('../assets/rippleload.gif')
 const wheelchairSeat = require('../assets/wheelchair.png')
 
 const SeatingPlan = ({
