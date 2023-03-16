@@ -6,11 +6,8 @@ import reportWebVitals from './reportWebVitals'
 
 const seatingPlan = document.getElementById('SeatingPlan')
 const root = ReactDOM.createRoot(seatingPlan)
-root.render(
-  <React.StrictMode>
-    <App {...seatingPlan.dataset} />
-  </React.StrictMode>
-)
+
+root.render(<App {...seatingPlan.dataset} />)
 
 // If you want to start measuring performance in your app, pass a function
 // to log results (for example: reportWebVitals(console.log))
