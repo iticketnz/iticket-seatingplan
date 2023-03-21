@@ -1,3 +1,3 @@
-const SeatingPlan = require('./src/index.tsx')
+const SeatingPlan = require('./src/components/SeatingPlan.jsx')
 
 module.exports = { SeatingPlan }
