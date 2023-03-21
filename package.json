@@ -41,6 +41,7 @@
   },
   "scripts": {
     "start": "react-scripts start",
+    "rollup": "rollup -c",
     "build": "react-scripts build",
     "build:esm": "npx tsc",
     "build:cjs": "npx tsc --module commonjs --outDir dist/cjs",
