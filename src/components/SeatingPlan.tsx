@@ -18,15 +18,23 @@ const SeatingPlan = ({
   priceAgeId,
   price,
   quantity,
+} : {
+  eventId: number,
+  showingUid: string,
+  sessionId: string,
+  showingId: number,
+  priceAgeId: number,
+  price: number,
+  quantity: number,
 }) => {
-  const [position, setPosition] = useState(null)
-  const [height, setHeight] = useState(null)
-  const [width, setWidth] = useState(null)
-  const [seats, setSeats] = useState([])
-  const [error, setError] = useState(null)
+  const [position, setPosition] = useState<any>(null)
+  const [height, setHeight] = useState<number>(0)
+  const [width, setWidth] = useState<number>(0)
+  const [seats, setSeats] = useState<any>([])
+  const [error, setError] = useState<any>(null)
   const [processing, setProcessing] = useState(false)
-  const [bookedSeats, setBookedSeats] = useState([])
-  const [chosenSeat, setChosenSeat] = useState(null)
+  const [bookedSeats, setBookedSeats] = useState<any>([])
+  const [chosenSeat, setChosenSeat] = useState<{circle: any, seat: any} | null>(null)
 
   const statusColors = {
     unknown: '#95a5a6',
@@ -37,7 +45,7 @@ const SeatingPlan = ({
     booked: '#e74c3c',
   }
 
-  const setInitialColor = (s) => {
+  const setInitialColor = (s: any) => {
     return {
       fillColor:
         s.status === 1
@@ -50,7 +58,7 @@ const SeatingPlan = ({
     }
   }
 
-  const handleClick = (e, s) => {
+  const handleClick = (e: any, s: any) => {
     if (
       (s.status !== 1 && s.status !== 4) ||
       processing ||
@@ -130,7 +138,7 @@ const SeatingPlan = ({
           s.status = 1
           e.target.setStyle({ fillColor: statusColors.available })
           setBookedSeats(
-            bookedSeats.filter((bs) => bs.showingSeatId !== s.showingSeatId)
+            bookedSeats.filter((bs: any) => bs.showingSeatId !== s.showingSeatId)
           )
           setProcessing(false)
         })
@@ -163,7 +171,7 @@ const SeatingPlan = ({
           const img = new Image()
           img.src = data.background
 
-          setBookedSeats(data.seats.filter((s) => s.status === 4))
+          setBookedSeats(data.seats.filter((s: any) => s.status === 4))
 
           img.onload = () => {
             setHeight(img.height)
@@ -187,7 +195,7 @@ const SeatingPlan = ({
 
   useEffect(() => {
     if (processing) {
-      chosenSeat.circle.target.setStyle({ fillOpacity: 0 })
+      chosenSeat?.circle.target.setStyle({ fillOpacity: 0 })
     }
   }, [chosenSeat])
 
@@ -205,7 +213,7 @@ const SeatingPlan = ({
           zoom={5}
           scrollWheelZoom={true}
           style={{ minHeight: '500px', height: '100%', minWidth: '500px' }}
-          onClick={handleClick}
+          // onClick={handleClick}
         >
           <ImageOverlay
             url={seats.background}
@@ -215,7 +223,7 @@ const SeatingPlan = ({
             ]}
             zIndex={10}
           />
-          {seats.seats.map((s, i) => (
+          {seats.seats.map((s: any, i: number) => (
             <div key={i}>
               <ImageOverlay
                 url={`https://iticketseatingplan.blob.core.windows.net/embed/static/media/rippleload.08e6a08dd832819226ef.gif`}
@@ -256,8 +264,8 @@ const SeatingPlan = ({
                   ]}
                   pathOptions={setInitialColor(s)}
                   radius={20000}
-                  eventHandlers={{ click: (e) => handleClick(e, s) }}
-                  value={s}
+                  eventHandlers={{ click: (e: any) => handleClick(e, s) }}
+                  // value={s}
                 >
                   <Tooltip direction={'top'} offset={[0, height * 0.03 + -30]}>
                     {s.rowName + '-' + s.columnName}
@@ -266,7 +274,7 @@ const SeatingPlan = ({
               )}
             </div>
           ))}
-          <GeoJSON attribution="powered by &copy; iTICKET" />
+          {/* <GeoJSON attribution="powered by &copy; iTICKET" data={}/> */}
         </MapContainer>
       ) : (
         <div className="loading">

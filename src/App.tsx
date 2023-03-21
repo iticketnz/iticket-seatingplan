@@ -8,7 +8,17 @@ function App({
   showingid,
   priceageid,
   price,
-  quantity,
+  quantity, 
+  style
+} : {
+  eventid: number,
+  showinguid: string,
+  sessionid: string,
+  showingid: number,
+  priceageid: number,
+  price: number,
+  quantity: number,
+  style: any
 }) {
   return (
     <div className="App">
